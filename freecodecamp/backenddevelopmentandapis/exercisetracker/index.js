@@ -99,10 +99,6 @@ app.get('/api/users/:_id/logs', async function(req, res) {
 
   const ifQuery = (prop, queryProp, value) => value === null ? null : {[prop]: {[queryProp]: value}};
 
-  console.log(`from: ${from}`);
-  console.log(`to: ${to}`);
-  console.log(ifQuery('date', '$gte', from));
-
   let userExercises = await Exercise.find({ $and: [
                                                     {user: userId},
                                                     ifQuery('date', '$gte', from),
